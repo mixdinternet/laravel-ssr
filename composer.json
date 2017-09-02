@@ -1,0 +1,30 @@
+{
+    "name": "mixdinternet/laravel-ssr",
+    "description": "Server Side Rendering with Laravel",
+    "keywords": ["laravel", "ssr", "server-side-rendering", "vue", "angular"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Irineu Martins Junior",
+            "email": "irineu@mixd.com.br",
+            "homepage": "http://www.mixd.com.br/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "laravel/framework": "~5.4.0|~5.5.0",
+        "jonnyw/php-phantomjs": "4.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mixdinternet\\SSR\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Mixdinternet\\SSR\\Providers\\SSRServiceProvider"
+            ]
+        }
+    }
+}
