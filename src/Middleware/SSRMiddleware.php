@@ -4,6 +4,7 @@ namespace Mixdinternet\SSR\Middleware;
 
 use Closure;
 use JonnyW\PhantomJs\Client;
+use Cache;
 
 class SSRMiddleware
 {
@@ -24,7 +25,7 @@ class SSRMiddleware
         }
 
         $key = md5($url);
-        $content = cache()->get($key, function () use ($key, $url, $fragment) {
+        $content = Cache::get($key, function () use ($key, $url, $fragment) {
 
             $client = Client::getInstance();
             $client->getEngine()->setPath(config('ssr.phantom_location'));
@@ -39,7 +40,7 @@ class SSRMiddleware
 
             if ($response->getStatus() === 200) {
                 $content = $response->getContent();
-                cache()->put($key, $content, config('ssr.lifetime'));
+                Cache::put($key, $content, config('ssr.lifetime'));
 
                 return $content;
             }
